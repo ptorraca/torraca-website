@@ -67,7 +67,7 @@ SERVICES = [
   "edu_list":["Installing or commissioning industrial machinery","Upgrading to 3-phase power for heavy equipment","Setting up a new warehouse, factory, or manufacturing space","Carrying out high-bay lighting installations","Performing compliance testing in industrial facilities","Dealing with recurring faults or tripped industrial circuits"],
   "edu_close":"Contact Torraca Electrical to discuss your industrial electrical project. We'll provide a clear scope and competitive quote."},
 
- {"slug":"ev-charger-installation","name":"EV Charger Installation","icon":"ev","img":"ev-home.jpg","focus":"center 40%",
+ {"slug":"ev-charger-installation","name":"EV Charger Installation","icon":"ev","img":"ev-business-hero.jpg","focus":"center 45%",
   "card":"Home and commercial EV chargers installed properly, with the switchboard checked so it charges at full speed.",
   "h1":"Get your EV charger installed by the local experts.",
   "hero":"Torraca Electrical installs EV chargers for homes and businesses across Hornsby and the North Shore. All makes and models, fully licensed, done right the first time.",
@@ -416,7 +416,7 @@ REGIONS=["North Shore","Northern Beaches","Hills District"]
 # the same searches.
 # =========================================================
 HOME_SERVICES = [
- {"slug":"electrical-repairs","name":"Electrical Repairs","icon":"home","img":"onsite-ladder.jpg","focus":"center 20%",
+ {"slug":"electrical-repairs","name":"Electrical Repairs","icon":"home","img":"electrical-repairs-hero.jpg","focus":"center 30%",
   "card":"Flickering lights, dead power points, tripping breakers or a fault you can't find. We diagnose it and fix it properly.",
   "h1":"Electrical repairs for your home, done properly the first time.",
   "hero":"Flickering lights, dead power points, a breaker that keeps tripping or a fault you just can't track down. Torraca Electrical finds the cause and fixes it right, across Hornsby and the North Shore.",
@@ -435,7 +435,7 @@ HOME_SERVICES = [
   "edu_list":["A power point that feels warm, sparks, or has scorch marks","Lights that flicker or dim for no obvious reason","A safety switch or breaker that keeps tripping","A burning smell near a fitting, switch or the switchboard","Power points or switches that only work sometimes","Anything that gives you even a small tingle when you touch it"],
   "edu_close":"If a fitting is sparking or you can smell burning, switch that circuit off at the board and call us straight away. For anything less urgent, book a visit and we'll get it sorted."},
 
- {"slug":"switchboard-upgrades","name":"Switchboard Upgrades","icon":"board","img":"meterbox-1.jpg","focus":"center 42%",
+ {"slug":"switchboard-upgrades","name":"Switchboard Upgrades","icon":"board","img":"switchboard-upgrades-hero.jpg","focus":"center 45%",
   "card":"Old ceramic fuses or no safety switches? We upgrade your switchboard to modern breakers and RCDs, ready for today's loads.",
   "h1":"Switchboard upgrades that bring your home up to standard.",
   "hero":"Ceramic fuses, no safety switches, or a board that trips every time the kettle and heater run together. Torraca Electrical upgrades home switchboards across Hornsby and the North Shore to modern, safe, compliant standards.",
@@ -454,7 +454,7 @@ HOME_SERVICES = [
   "edu_list":["It still uses ceramic fuses or rewireable fuse wire","There are no safety switches (RCDs) protecting the circuits","It trips whenever a few appliances run at once","It's rusty, crowded, or has no room for another circuit","You're adding an EV charger, air con, or renovating","The board is more than 15 to 20 years old"],
   "edu_close":"A typical home switchboard upgrade starts around $4,000 depending on scope. We'll assess yours and give you a clear, itemised quote before any work starts."},
 
- {"slug":"led-lighting","name":"LED Lighting","icon":"bulb","img":"led-stairs.jpg","focus":"center 45%",
+ {"slug":"led-lighting","name":"LED Lighting","icon":"bulb","img":"led-lighting-hero.jpg","focus":"center 40%",
   "card":"Downlights, replacements and full lighting plans. Brighter, cheaper to run, and installed to last, not to fail in two years.",
   "h1":"LED lighting that looks better and costs less to run.",
   "hero":"Swapping tired halogens for LED, planning downlights for a reno, or fixing lights that keep failing. Torraca Electrical designs and installs home LED lighting across Hornsby and the North Shore.",
@@ -473,7 +473,7 @@ HOME_SERVICES = [
   "edu_list":["You still have halogen downlights that run hot and cost a fortune","Bulbs and fittings keep blowing or flickering","You're renovating and want the lighting planned properly","Rooms feel too dark, too harsh, or unevenly lit","You want dimming or zones for living and bedroom areas","You'd like lower power bills without losing brightness"],
   "edu_close":"We'll look at what you've got, tell you what's worth changing and what isn't, and quote it clearly. No pressure to replace what's fine."},
 
- {"slug":"safety-switches","name":"Safety Switches","icon":"shield","img":"meterbox-2.jpg","focus":"center 42%",
+ {"slug":"safety-switches","name":"Safety Switches","icon":"shield","img":"safety-switches-hero.jpg","focus":"center 35%",
   "card":"Safety switches (RCDs) cut the power in milliseconds to stop a shock becoming fatal. We install and test them properly.",
   "h1":"Safety switches that protect your family, installed and tested right.",
   "hero":"A safety switch cuts the power in a fraction of a second when something goes wrong, and every home should have them on every circuit. Torraca Electrical installs and tests RCDs across Hornsby and the North Shore.",
@@ -492,7 +492,7 @@ HOME_SERVICES = [
   "edu_list":["Your switchboard still uses fuses or has no visible test buttons","Only some circuits are protected, not all of them","You've never tested the switches, or don't know how","A safety switch keeps tripping for no clear reason","You're buying, selling, or renting out the property","The home hasn't had an electrical check in years"],
   "edu_close":"Testing your safety switches is quick and cheap, and installing them where they're missing is one of the most important electrical jobs in any home. Give us a call and we'll sort it."},
 
- {"slug":"smoke-alarms","name":"Smoke Alarms","icon":"alert","img":"van.jpg",
+ {"slug":"smoke-alarms","name":"Smoke Alarms","icon":"alert","img":"smoke-alarms-hero.jpg","focus":"center 40%",
   "card":"Hard-wired, interconnected photoelectric smoke alarms installed and tested to keep your home compliant and your family safe.",
   "h1":"Smoke alarms installed, interconnected and compliant.",
   "hero":"Smoke alarms that are hard-wired, interconnected and where they need to be. Torraca Electrical installs and tests photoelectric smoke alarms for homes across Hornsby and the North Shore.",
@@ -511,7 +511,7 @@ HOME_SERVICES = [
   "edu_list":["Any alarm is more than 10 years old (check the date on it)","Your alarms are battery-only rather than hard-wired","The alarms aren't interconnected so only one sounds","You've still got old ionisation alarms rather than photoelectric","An alarm keeps chirping or going off for no reason","You're renting the property out and need it compliant"],
   "edu_close":"If your alarms are old or you're not sure they'd all sound in a fire, book a check. It's a small job that matters more than almost any other."},
 
- {"slug":"ev-charger","name":"EV Charger","icon":"ev","img":"ev-home.jpg","focus":"center 40%",
+ {"slug":"ev-charger","name":"EV Charger","icon":"ev","img":"ev-charger-hero.jpg","focus":"center 45%",
   "card":"A home EV charger installed properly, with the switchboard checked so your car charges safely at full speed overnight.",
   "h1":"Home EV charger installation, done right.",
   "hero":"Charge at home overnight, safely and at full speed. Torraca Electrical installs home EV chargers across Hornsby and the North Shore, all brands, with the switchboard checked first.",
@@ -531,7 +531,7 @@ HOME_SERVICES = [
   "edu_close":"Not sure what your home can take? We offer a free assessment and clear quote. Just get in touch.",
   "cross":("ev-charger-installation","EV charger installation for business and strata","Fitting out a workplace, carpark or strata building? See our")},
 
- {"slug":"ceiling-fans","name":"Ceiling Fans","icon":"compass","img":"lighting.jpg",
+ {"slug":"ceiling-fans","name":"Ceiling Fans","icon":"compass","img":"ceiling-fans-hero.jpg","focus":"center 30%",
   "card":"Ceiling fans supplied and installed, or your fan swapped and wired to a proper controller. Balanced, quiet, done right.",
   "h1":"Ceiling fans installed and wired properly.",
   "hero":"A new fan supplied and fitted, or an old one swapped out and wired to a proper controller. Torraca Electrical installs ceiling fans across Hornsby and the North Shore.",
@@ -550,7 +550,7 @@ HOME_SERVICES = [
   "edu_list":["You're adding a fan where there's no existing point","An old fan is wobbling, humming or running slowly","You want a fan and light combo on separate switches","You'd like remote or wall speed control","The room is outdoors or undercover and needs a rated fan","You've bought a fan and want it fitted safely"],
   "edu_close":"Whether it's one fan or fans through the whole house, we'll get them up, balanced and running quietly. Give us a call."},
 
- {"slug":"power-points","name":"Power Points","icon":"data","img":"switchboard.jpg",
+ {"slug":"power-points","name":"Power Points","icon":"data","img":"power-points-hero.jpg","focus":"center 48%",
   "card":"Extra power points, USB outlets and outdoor GPOs added where you actually need them. No more double adaptors and lead runs.",
   "h1":"Extra power points, exactly where you need them.",
   "hero":"More outlets, USB points, and outdoor power where the double adaptors and extension leads currently live. Torraca Electrical adds power points for homes across Hornsby and the North Shore.",
@@ -569,7 +569,7 @@ HOME_SERVICES = [
   "edu_list":["You're relying on double adaptors and power boards","Extension leads are running between rooms","There's no power where you've set up a desk or TV","The kitchen or laundry is short on benchtop outlets","You want weatherproof power outside","An existing outlet is cracked, worn or feels warm"],
   "edu_close":"Adding outlets is quick and inexpensive, and it clears the clutter and the safety risk of overloaded boards. Tell us where you need power and we'll sort it."},
 
- {"slug":"outdoor-lighting","name":"Outdoor Lighting","icon":"tree","img":"lighting.jpg",
+ {"slug":"outdoor-lighting","name":"Outdoor Lighting","icon":"tree","img":"outdoor-lighting-hero.jpg","focus":"center 45%",
   "card":"Garden, path, deck and security lighting for your home. Wired to last outdoors, RCD-protected, and set on timers or sensors.",
   "h1":"Outdoor lighting that makes your home safer and better to live in.",
   "hero":"Path and garden lights, deck and entertaining areas, and sensor security lighting. Torraca Electrical designs and installs home outdoor lighting across Hornsby and the North Shore.",
@@ -589,7 +589,7 @@ HOME_SERVICES = [
   "edu_close":"We'll make sure your outdoor lighting looks the part and is completely safe and compliant. Tell us what you're picturing and we'll take it from there.",
   "cross":("landscape-lighting","full landscape and feature lighting service","Larger garden, pool or feature lighting project? See our")},
 
- {"slug":"rewiring","name":"Rewiring","icon":"bolt","img":"mains-trench.jpg","focus":"center 45%",
+ {"slug":"rewiring","name":"Rewiring","icon":"bolt","img":"rewiring-hero.jpg","focus":"center 50%",
   "card":"Old, brittle or unsafe wiring replaced. Full or partial home rewires, planned around you, with minimal mess and disruption.",
   "h1":"Rewiring that makes an older home safe again.",
   "hero":"Old cloth or brittle wiring, not enough circuits, and repairs that keep coming back. Torraca Electrical handles full and partial home rewires across Hornsby and the North Shore.",
@@ -608,7 +608,7 @@ HOME_SERVICES = [
   "edu_list":["The home still has old cloth-covered or rubber wiring","There's no earth on some circuits or outlets","Repairs and faults keep recurring in the same areas","The home is 40-plus years old and never rewired","You're renovating and opening up walls anyway","Lights dim and circuits overload with normal use"],
   "edu_close":"Not every old home needs a full rewire, and we'll tell you honestly whether a partial job or targeted repairs will do instead. Book an assessment and we'll give you the straight version."},
 
- {"slug":"surge-protection","name":"Surge Protection","icon":"shield","img":"meterbox-3.jpg","focus":"center 42%",
+ {"slug":"surge-protection","name":"Surge Protection","icon":"shield","img":"surge-protection-hero.jpg","focus":"center 35%",
   "card":"Whole-home surge protection at the switchboard to guard your appliances and electronics from spikes and storm damage.",
   "h1":"Surge protection that guards your appliances and electronics.",
   "hero":"One power spike can take out a fridge, a TV and every charger in the house. Torraca Electrical fits whole-home surge protection at the switchboard across Hornsby and the North Shore.",
@@ -627,7 +627,7 @@ HOME_SERVICES = [
   "edu_list":["You've lost appliances or electronics to a spike before","You're in an area that gets decent storms","You have solar, a battery, or a home office setup","You've just upgraded the switchboard anyway","Lights flicker or dim when big appliances kick in","You want cheap insurance for expensive gear"],
   "edu_close":"Surge protection is inexpensive next to the equipment it protects. We'll check whether your board can take a device and fit one that suits. Give us a call."},
 
- {"slug":"emergency","name":"24/7 Emergency","icon":"alert","img":"van.jpg","emergency":True,
+ {"slug":"emergency","name":"24/7 Emergency","icon":"alert","img":"emergency-hero.jpg","focus":"center 32%","emergency":True,
   "card":"Power out, sparking, or a burning smell at home? We answer 24/7 across the North Shore and make it safe, fast.",
   "h1":"Home electrical emergency? We're on call right now.",
   "hero":"Power out, sparking, or a burning smell at home? Torraca Electrical answers 24 hours a day, 7 days a week for urgent home electrical emergencies across Hornsby and the North Shore.",
