@@ -1,0 +1,16 @@
+# Netlify continuous deploy config.
+# Every push to the connected GitHub repo triggers this build.
+[build]
+  command = "python3 render.py && python3 build_netlify.py"
+  publish = "public"
+
+[build.environment]
+  PYTHON_VERSION = "3.11"
+
+# STAGING ONLY: keeps the temporary *.netlify.app URL out of Google while it
+# duplicates the live Squarespace site. DELETE this block when you point the
+# real domain (torracaelectrical.com.au) at Netlify.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"

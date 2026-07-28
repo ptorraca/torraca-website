@@ -1,0 +1,4 @@
+# Staging only: keep the *.netlify.app URL out of Google while it duplicates
+# the live Squarespace site. DELETE this file when the real domain goes live.
+/*
+  X-Robots-Tag: noindex
