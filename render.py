@@ -333,7 +333,7 @@ def build_segment(seg):
 REACH={
  "North Shore":("part of our regular service area","Being local to the North Shore, we can usually get to {name} quickly."),
  "Hills District":("an area we regularly cover","We cover the Hills District regularly, so we can usually get to {name} without much wait."),
- "Northern Beaches":("an area we cover across the Northern Beaches","We cover the Northern Beaches regularly. Give us a ring and we will tell you the soonest we can be there."),
+ "Northern Beaches":("an area we cover across the Northern Beaches","We cover the Northern Beaches regularly, though we are a fair run from base."),
 }
 
 def build_suburb(sb):

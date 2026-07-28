@@ -10,7 +10,8 @@ PUB = os.path.join(ROOT, "public")
 SKIP_DIRS = {"public", ".git", "__pycache__", "_embed", "node_modules"}
 SKIP_FILES = {"preview.html", "_preview_fragment.html", "LAUNCH.md",
               "netlify.toml", ".gitignore", "README.md", ".DS_Store",
-              "gh-deploy-token.txt", "SETUP-github-deploy.md"}
+              "gh-deploy-token.txt", "SETUP-github-deploy.md",
+              "DEPLOY-github-netlify.md"}
 SKIP_EXT = {".py", ".pyc", ".bak"}
 
 def keep(rel):
