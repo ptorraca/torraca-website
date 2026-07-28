@@ -174,10 +174,11 @@ def build_service(s):
     badge = f'<span class="em-badge">{I["alert"]}Available 24 hours, 7 days</span>' if emg else ""
     hero_cls = "pagehero emergency" if emg else "pagehero"
     prose_cls = "prose emergency" if emg else "prose"
+    foc=f' style="object-position:{s["focus"]}"' if s.get("focus") else ""
     body=f"""
 <main>
 <section class="{hero_cls}">
-  <img class="pagehero-bg" src="../../assets/img/{s['img']}" alt="Torraca Electrical, {html.escape(s['name'].lower())}" width="1000" height="1333">
+  <img class="pagehero-bg" src="../../assets/img/{s['img']}" alt="Torraca Electrical, {html.escape(s['name'].lower())}" width="1000" height="1333"{foc}>
   <div class="inner">
     <div class="crumb"><a href="../../">Home</a> / <a href="../">Services</a> / {s['name']}</div>
     {badge}
@@ -250,10 +251,11 @@ def build_home_service(s):
     badge=f'<span class="em-badge">{I["alert"]}Available 24 hours, 7 days</span>' if emg else ""
     hero_cls="pagehero emergency" if emg else "pagehero"
     prose_cls="prose emergency" if emg else "prose"
+    foc=f' style="object-position:{s["focus"]}"' if s.get("focus") else ""
     body=f"""
 <main>
 <section class="{hero_cls}">
-  <img class="pagehero-bg" src="../../assets/img/{s['img']}" alt="Torraca Electrical, {html.escape(s['name'].lower())}" width="1000" height="1333">
+  <img class="pagehero-bg" src="../../assets/img/{s['img']}" alt="Torraca Electrical, {html.escape(s['name'].lower())}" width="1000" height="1333"{foc}>
   <div class="inner">
     <div class="crumb"><a href="../../">Home</a> / <a href="../">Homeowners</a> / {s['name']}</div>
     {badge}
