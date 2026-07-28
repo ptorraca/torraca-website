@@ -342,6 +342,9 @@ def build_suburb(sb):
     name=sb['name']
     region=sb.get('region','North Shore')
     reach_area,reach_speed=REACH.get(region,REACH["North Shore"])
+    # REACH strings carry a literal {name} placeholder; fill it with the suburb.
+    reach_area=reach_area.replace("{name}",name)
+    reach_speed=reach_speed.replace("{name}",name)
     # Per-suburb hero photo. Drop a file in assets/img/ and add "photo":"<filename>"
     # to the suburb in content.py (ideally the team on the job in that suburb).
     # Falls back to the shared van shot until a local photo is supplied.
