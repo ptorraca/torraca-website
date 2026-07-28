@@ -3,6 +3,7 @@ from content import *
 import build
 build.NAV_SERVICES = [(s['slug'], s['name']) for s in SERVICES if s['slug'] != 'level-2-asp-electrician']
 build.NAV_SUBURBS = [(sb['slug'], sb['name']) for sb in SUBURBS]
+build.NAV_HOME = [(s['slug'], s['name']) for s in HOME_SERVICES]
 
 def ticks(items):
     return '<ul class="ticks">'+"".join(f'<li>{I["check"]}<span>{html.escape(x)}</span></li>' for x in items)+'</ul>'
@@ -221,6 +222,82 @@ def build_service(s):
     doc=head(s['title'],s['meta'],url,schema,d)+header(d)+body+footer(d)
     write(f"services/{s['slug']}/index.html",doc)
 
+# ---------------- HOMEOWNER SERVICE PAGES ----------------
+# Same rich template as build_service, but lives at /homeowners/<slug>/ and its
+# related links point to sibling homeowner pages. Optional "cross" key renders a
+# line pointing to the broader /services/ page so the two don't compete.
+def build_home_service(s):
+    d=2
+    url=f"{BASE}/homeowners/{s['slug']}/"
+    emg=s.get("emergency")
+    related=[x for x in HOME_SERVICES if x['slug']!=s['slug']][:4]
+    rel_links="".join(f'<li><a href="../{r["slug"]}/">{I["arrow"]}{r["name"]}</a></li>' for r in related)
+    sub_links="".join(f'<li><a href="../../{sb["slug"]}/">{I["pin"]}{sb["name"]}</a></li>' for sb in SUBURBS[:6])
+    schema=[
+      {"@context":"https://schema.org","@type":"Service","name":s['name'],
+       "serviceType":s.get('stype',s['name']),"provider":local_business_schema(url=url),
+       "areaServed":{"@type":"AdministrativeArea","name":"North Shore Sydney"},"url":url},
+      breadcrumb_schema([("Home",BASE+"/"),("Homeowners",BASE+"/homeowners/"),(s['name'],url)])]
+    intro_html="".join(f"<p>{p}</p>" for p in s['intro'])
+    if s.get("cross"):
+        cslug,clabel,clead=s["cross"]
+        intro_html+=f'<p class="crosslink">{clead} <a href="../../services/{cslug}/">{clabel}</a>.</p>'
+    groups_html=""
+    for gh,items in s['groups']:
+        groups_html+=f"<h3>{html.escape(gh)}</h3>{ticks(items)}"
+    edu_html=(f"<h2>{html.escape(s['edu_h'])}</h2><p>{s['edu_intro']}</p>"
+              f"{ticks(s['edu_list'])}<p>{s['edu_close']}</p>")
+    badge=f'<span class="em-badge">{I["alert"]}Available 24 hours, 7 days</span>' if emg else ""
+    hero_cls="pagehero emergency" if emg else "pagehero"
+    prose_cls="prose emergency" if emg else "prose"
+    body=f"""
+<main>
+<section class="{hero_cls}">
+  <img class="pagehero-bg" src="../../assets/img/{s['img']}" alt="Torraca Electrical, {html.escape(s['name'].lower())}" width="1000" height="1333">
+  <div class="inner">
+    <div class="crumb"><a href="../../">Home</a> / <a href="../">Homeowners</a> / {s['name']}</div>
+    {badge}
+    <h1>{s['h1']}</h1>
+    <p class="sub">{s['hero']}</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap">
+      <a class="btn btn-white" href="tel:{TEL}">{I['phone']}Call {PHONE}</a>
+      <a class="btn btn-ghost" href="../../contact/">Get a quote</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap layout">
+    <div class="{prose_cls}">
+      {intro_html}
+      <h2>Our {s['name'].lower()} services</h2>
+      {groups_html}
+      {edu_html}
+    </div>
+    <aside class="aside">
+      <div class="box">
+        <h4>{'Emergency? Call now' if emg else 'Talk to Torraca'}</h4>
+        <p>{'We answer 24/7 for urgent electrical faults across the North Shore.' if emg else 'Straight advice and a clear quote. We cover Hornsby and the North Shore.'}</p>
+        <a class="btn btn-red" href="tel:{TEL}" style="width:100%;margin-bottom:10px">{I['phone']}{PHONE}</a>
+        <a class="btn btn-outline" href="{SMSLINK}" style="width:100%;margin-bottom:10px">{I['sms']}Text us</a>
+        <a class="btn btn-outline" href="../../contact/" style="width:100%">Request a quote</a>
+      </div>
+      <div class="box">
+        <h4>More for homeowners</h4>
+        <ul class="linklist">{rel_links}</ul>
+      </div>
+      <div class="box">
+        <h4>Popular areas</h4>
+        <ul class="linklist">{sub_links}</ul>
+      </div>
+    </aside>
+  </div>
+</section>
+{cta_band("../../")}
+</main>"""
+    doc=head(s['title'],s['meta'],url,schema,d)+header(d)+body+footer(d)
+    write(f"homeowners/{s['slug']}/index.html",doc)
+
 # ---------------- SERVICES INDEX ----------------
 def build_services_index():
     d=1
@@ -262,6 +339,7 @@ SEGMENTS=[
   "title":"Electrician for Homeowners | Hornsby and North Shore | Torraca Electrical",
   "meta":"Licensed electricians for North Shore homeowners. Switchboards, EV chargers, lighting and Level 2, done right the first time. Call 0483 932 387.",
   "intro":"You want a sparky who turns up, does clean work, and gets it right the first time so you are not booking the same job twice. That is who we are. From an extra powerpoint to a full switchboard upgrade or an EV charger, we handle it and we future-proof it, so the work holds up for years.",
+  "home_services":True,
   "services":["residential-electrician","ev-charger-installation","level-2-asp-electrician","landscape-lighting","thermal-imaging","emergency-electrician"]},
  {"slug":"businesses","name":"Businesses","img":"switchboard.jpg",
   "h1":"Electricians for North Shore businesses",
@@ -276,26 +354,103 @@ SEGMENTS=[
   "title":"Electrician for Property Managers | Torraca Electrical",
   "meta":"A reliable electrician for property managers across the North Shore. Fast response, clear reporting, work that holds up. Call 0483 932 387.",
   "intro":"You want one electrician you can call and forget about, who turns up, sorts it, sends the paperwork and keeps it off your desk. That is the whole pitch. Reliable maintenance, fast response and clear reporting for the properties you manage.",
-  "services":["strata-property-maintenance","emergency-electrician","residential-electrician","thermal-imaging"]},
+  "services":["strata-property-maintenance","emergency-electrician","residential-electrician","thermal-imaging"],
+  "why":("Why property managers use Torraca",[
+    "The job of a property manager is already full. The last thing you need is an electrician you have to chase, who leaves the tenant unhappy, or who sends an invoice you can't reconcile. We are set up to take that off your plate, not add to it.",
+    "One point of contact, direct liaison with the tenant so you are not stuck in the middle, photos and a clear report for the file, and an itemised invoice to the agency. Because we are a Level 2 provider as well as a full electrical contractor, most jobs are handled by one team from the street to the powerpoint, without a second trade and a second delay."]),
+  "points":("What you get with us",[
+    "Fast response on repairs and faults, with genuine emergency cover 24/7",
+    "Direct liaison with tenants to book access, so it's not on you",
+    "Photos and a written report for the property file",
+    "Itemised invoicing to the agency, easy to reconcile and pass on",
+    "Smoke alarm and safety switch compliance handled and documented",
+    "One team for wiring, switchboards and network-side supply (Level 2)"]),
+  "faqs":[
+    ("How quickly can you respond to a repair?","For standard repairs we book the next available slot and coordinate access with the tenant directly. For genuine emergencies, like loss of power or a safety hazard, we run a 24/7 callout service across the North Shore."),
+    ("Do you deal with the tenant directly?","Yes, if you'd like us to. We can contact the tenant to arrange access and keep you copied in, so you're not stuck relaying messages. You stay in control of approvals and we handle the legwork."),
+    ("How does invoicing work?","We invoice the managing agency with an itemised breakdown of labour and materials, so it's easy to reconcile and pass through to the owner. We can hold to an agreed spend limit and call you before going over it."),
+    ("Can you handle smoke alarm and safety compliance?","Yes. We install and test hard-wired, interconnected smoke alarms and safety switches to current NSW requirements, and provide the documentation you need for the file and for the owner.")]},
  {"slug":"strata","name":"Strata","img":"van.jpg",
   "h1":"Strata electrical, handled",
   "hero":"Common areas, compliance and reactive callouts for owners corporations and strata managers across the North Shore.",
   "title":"Strata Electrician | North Shore | Torraca Electrical",
   "meta":"Strata electrical for owners corporations and strata managers. Common areas, compliance, reactive callouts and reporting. Call 0483 932 387.",
   "intro":"Common areas, car parks, compliance and the after-hours callout nobody planned for. We handle strata electrical for owners corporations and strata managers across the North Shore, with the documentation you need to stay compliant year-round.",
-  "services":["strata-property-maintenance","emergency-electrician","commercial-electrician","level-2-asp-electrician"]},
+  "services":["strata-property-maintenance","emergency-electrician","commercial-electrician","level-2-asp-electrician"],
+  "why":("Why strata managers use Torraca",[
+    "Strata is its own animal. You're balancing an owners corporation, a committee, multiple lots and shared infrastructure, and every job needs to be documented and defensible. We understand how common property works and how to keep the paperwork straight.",
+    "We respond quickly, communicate clearly with the committee and residents, and give you compliance certificates and job reports you can put straight into the strata records. Being Level 2 means we can also handle the supply side of common property, so you're not waiting on a second provider for the network work."]),
+  "points":("What we handle for strata",[
+    "Common area, carpark and basement lighting maintenance and upgrades",
+    "Emergency and exit lighting testing on the required schedule",
+    "RCD (safety switch) testing and compliance for common area boards",
+    "Switchboard audits, upgrades and defect rectification",
+    "Compliance certificates and written reports for the strata records",
+    "After-hours callouts for common property faults, 24/7",
+    "Consumer mains and supply work on common property (Level 2)"]),
+  "faqs":[
+    ("What are our compliance obligations for common areas?","Owners corporations are responsible for keeping common area electrical systems safe. In practice that usually means emergency and exit lighting tested on schedule, safety switches tested on common area boards, and any defects in building reports addressed. We can set up a routine that keeps it all current."),
+    ("Who do you invoice?","We invoice the strata manager or owners corporation directly, with an itemised breakdown for the records. We can work to an approved scope and flag anything that would take a job over an agreed limit before we proceed."),
+    ("Do you provide reports for our records?","Yes. Every job comes with a clear written report, and compliance work comes with the relevant certificate, so you have what you need for the committee, the records and any audit."),
+    ("Can you attend after-hours common property faults?","Yes. We run a 24/7 emergency callout service across the North Shore for common property faults like lighting failures, tripped mains and safety hazards.")]},
 ]
 
 def build_segment(seg):
     d=1
     url=f"{BASE}/{seg['slug']}/"
     cards=""
-    for slug in seg['services']:
-        s=SVC_BY_SLUG[slug]
-        cards+=f"""<a class="card reveal" href="../services/{s['slug']}/"><div class="ic">{I[s['icon']]}</div>
+    if seg.get("home_services"):
+        # Homeowners hub: cards point to the granular /homeowners/<slug>/ pages.
+        for s in HOME_SERVICES:
+            cards+=f"""<a class="card reveal" href="{s['slug']}/"><div class="ic">{I[s['icon']]}</div>
           <h3>{s['name']}</h3><p>{s['card']}</p><span class="arrow">Learn more {I['arrow']}</span></a>"""
+    else:
+        for slug in seg['services']:
+            s=SVC_BY_SLUG[slug]
+            cards+=f"""<a class="card reveal" href="../services/{s['slug']}/"><div class="ic">{I[s['icon']]}</div>
+          <h3>{s['name']}</h3><p>{s['card']}</p><span class="arrow">Learn more {I['arrow']}</span></a>"""
+    cards_label = seg['name'].lower() if seg['name']!='Strata' else 'strata'
     schema=[local_business_schema(url=url),
       breadcrumb_schema([("Home",BASE+"/"),(seg['name'],url)])]
+
+    # Optional "why" block: (heading, [paras])
+    why_html=""
+    if seg.get("why"):
+        wh,wp=seg["why"]
+        paras="".join(f"<p>{p}</p>" for p in wp)
+        why_html=f"""
+<section class="section" style="padding-top:0">
+  <div class="wrap" style="max-width:820px">
+    <h2 class="h2">{html.escape(wh)}</h2>
+    {paras}
+  </div>
+</section>"""
+
+    # Optional "points" checklist block: (heading, [items])
+    points_html=""
+    if seg.get("points"):
+        ph,pi=seg["points"]
+        points_html=f"""
+<section class="section" style="padding-top:0">
+  <div class="wrap" style="max-width:820px">
+    <h2 class="h2">{html.escape(ph)}</h2>
+    {ticks(pi)}
+  </div>
+</section>"""
+
+    # Optional FAQs with FAQPage schema
+    faq_html=""
+    if seg.get("faqs"):
+        schema.append(faq_schema(seg["faqs"]))
+        faq_html=f"""
+<section class="section" style="padding-top:0">
+  <div class="wrap" style="max-width:820px">
+    <div class="center"><span class="eyebrow reveal">FAQs</span>
+    <h2 class="h2 reveal">Common questions</h2></div>
+    {qa_html(seg["faqs"])}
+  </div>
+</section>"""
+
     body=f"""
 <main>
 <section class="pagehero">
@@ -318,10 +473,13 @@ def build_segment(seg):
 <section class="section services-sec" style="padding-top:0">
   <div class="wrap">
     <div class="center"><span class="eyebrow reveal">How we help</span>
-    <h2 class="h2 reveal">What we do for {seg['name'].lower() if seg['name']!='Strata' else 'strata'}</h2></div>
+    <h2 class="h2 reveal">What we do for {cards_label}</h2></div>
     <div class="grid grid-3" style="margin-top:32px">{cards}</div>
   </div>
 </section>
+{why_html}
+{points_html}
+{faq_html}
 {cta_band("../")}
 </main>"""
     doc=head(seg['title'],seg['meta'],url,schema,d)+header(d)+body+footer(d)
@@ -713,6 +871,7 @@ def build_sitemap():
     urls=[BASE+"/",BASE+"/services/",BASE+"/about/",BASE+"/contact/",BASE+"/service-areas/"]
     urls+=[f"{BASE}/{seg['slug']}/" for seg in SEGMENTS]
     urls+=[f"{BASE}/services/{s['slug']}/" for s in SERVICES]
+    urls+=[f"{BASE}/homeowners/{s['slug']}/" for s in HOME_SERVICES]
     urls+=[f"{BASE}/{h['slug']}/" for h in AREA_HUBS]
     urls+=[f"{BASE}/{sb['slug']}/" for sb in SUBURBS]
     items="".join(f"  <url><loc>{u}</loc><changefreq>monthly</changefreq><priority>{'1.0' if u==BASE+'/' else '0.8'}</priority></url>\n" for u in urls)
@@ -724,6 +883,7 @@ if __name__=="__main__":
     build_services_index()
     for seg in SEGMENTS: build_segment(seg)
     for s in SERVICES: build_service(s)
+    for s in HOME_SERVICES: build_home_service(s)
     for sb in SUBURBS: build_suburb(sb)
     for hub in AREA_HUBS: build_area_hub(hub)
     build_about(); build_contact(); build_areas()

@@ -7,7 +7,7 @@ from build import *
 # No em dashes anywhere.
 # =========================================================
 SERVICES = [
- {"slug":"residential-electrician","name":"Residential Electrician","icon":"home","img":"van.jpg",
+ {"slug":"residential-electrician","name":"Residential Electrician","icon":"home","img":"onsite-ladder.jpg",
   "card":"Everything around the home: extra power points and lighting, switchboard upgrades, rewiring and fault finding.",
   "h1":"Your trusted local electrician for every job around the home.",
   "hero":"From everyday repairs to full home rewires, Torraca Electrical delivers safe, quality residential electrical services across Hornsby and the North Shore, done right the first time.",
@@ -67,7 +67,7 @@ SERVICES = [
   "edu_list":["Installing or commissioning industrial machinery","Upgrading to 3-phase power for heavy equipment","Setting up a new warehouse, factory, or manufacturing space","Carrying out high-bay lighting installations","Performing compliance testing in industrial facilities","Dealing with recurring faults or tripped industrial circuits"],
   "edu_close":"Contact Torraca Electrical to discuss your industrial electrical project. We'll provide a clear scope and competitive quote."},
 
- {"slug":"ev-charger-installation","name":"EV Charger Installation","icon":"ev","img":"ev-charger.jpg",
+ {"slug":"ev-charger-installation","name":"EV Charger Installation","icon":"ev","img":"ev-home.jpg",
   "card":"Home and commercial EV chargers installed properly, with the switchboard checked so it charges at full speed.",
   "h1":"Get your EV charger installed by the local experts.",
   "hero":"Torraca Electrical installs EV chargers for homes and businesses across Hornsby and the North Shore. All makes and models, fully licensed, done right the first time.",
@@ -147,7 +147,7 @@ SERVICES = [
   "edu_list":["Maintaining common area lighting and electrical systems","Ensuring emergency lighting is tested every 6 months","RCD (safety switch) testing in common area switchboards","Smoke alarm compliance in common areas","Addressing any electrical defects identified in building reports","Providing compliant electrical infrastructure for tenants"],
   "edu_close":"Torraca Electrical can set up a maintenance schedule to keep your property compliant year-round, taking the burden off your plate. Get in touch to discuss an arrangement that suits your portfolio."},
 
- {"slug":"sports-field-lighting","name":"Sports Field Lighting","icon":"bulb","img":"lighting.jpg",
+ {"slug":"sports-field-lighting","name":"Sports Field Lighting","icon":"bulb","img":"park-trench.jpg",
   "card":"LED sports field and court lighting designed to standard, from lux calcs and poles to controls and maintenance.",
   "h1":"High-performance sports lighting that lets the game go on.",
   "hero":"Torraca Electrical designs and installs LED sports lighting for ovals, courts, fields and multi-use facilities across Hornsby and the North Shore. Built for performance, efficiency and long-term reliability.",
@@ -186,7 +186,7 @@ SERVICES = [
   "edu_intro":"Outdoor electrical work involves additional hazards: weather exposure, water, underground cabling, and safety considerations that don't apply indoors. Attempting outdoor lighting without a licensed electrician can be dangerous and may void your home insurance. Here's why it matters:",
   "edu_list":["Outdoor circuits must be protected by safety switches (RCDs)","Pool lighting must comply with strict AS/NZS 3000 requirements","Underground cabling must be correctly installed and protected","All outdoor fittings must be rated for their environment (IP rating)","Incorrectly installed outdoor lighting is a fire and electrocution risk","Only licensed electricians can legally install permanent outdoor wiring"],
   "edu_close":"Torraca Electrical will ensure your landscape lighting is not only stunning but completely safe and compliant. Get in touch to discuss your vision."},
- {"slug":"level-2-asp-electrician","name":"Level 2 ASP Electrician","icon":"bolt","img":"switchboard.jpg",
+ {"slug":"level-2-asp-electrician","name":"Level 2 ASP Electrician","icon":"bolt","img":"service-overhead.jpg",
   "card":"Network-side work most electricians cannot legally touch: new connections, consumer mains, metering and service lines. Accreditation no. 5760.",
   "h1":"Level 2 ASP Electrician for Ausgrid Connections",
   "hero":"Torraca Electrical is an accredited Level 2 Authorised Service Provider, no. 5760. That means we can do the network-side work a standard electrician is not licensed to touch, and do it in the same visit as the rest of the job.",
@@ -406,4 +406,247 @@ SUBURBS=[
 SB_BY_SLUG={sb["slug"]:sb for sb in SUBURBS}
 REGIONS=["North Shore","Northern Beaches","Hills District"]
 
-print("content loaded:", len(SERVICES), "services,", len(SUBURBS), "suburbs")
+# =========================================================
+# HOMEOWNER SERVICE PAGES
+# Granular, home-focused service pages that sit under the Homeowners menu at
+# /homeowners/<slug>/. Same rich structure as SERVICES. Written for the
+# homeowner, not the builder or business. Three of these (ev-charger,
+# outdoor-lighting, emergency) overlap a broader /services/ page: the "cross"
+# key links to that page and the copy is kept home-only to avoid competing for
+# the same searches.
+# =========================================================
+HOME_SERVICES = [
+ {"slug":"electrical-repairs","name":"Electrical Repairs","icon":"home","img":"onsite-ladder.jpg",
+  "card":"Flickering lights, dead power points, tripping breakers or a fault you can't find. We diagnose it and fix it properly.",
+  "h1":"Electrical repairs for your home, done properly the first time.",
+  "hero":"Flickering lights, dead power points, a breaker that keeps tripping or a fault you just can't track down. Torraca Electrical finds the cause and fixes it right, across Hornsby and the North Shore.",
+  "stype":"Residential Electrical Repairs",
+  "title":"Electrical Repairs Hornsby | Home Fault Finding | Torraca Electrical",
+  "meta":"Licensed electrical repairs for homes across Hornsby and the North Shore. Fault finding, dead power points, tripping breakers and flickering lights, sorted. Call today.",
+  "intro":[
+    "When something electrical stops working at home, you want it looked at by someone who will find the actual cause, not just patch the symptom. Torraca Electrical does proper fault finding: we track the problem back to its source, explain what we find in plain terms, and fix it so it stays fixed.",
+    "Most home repairs are sorted in a single visit. Where a fault points to something bigger, like a tired switchboard or ageing wiring, we tell you straight and give you the options rather than papering over it. Every repair is backed by our 12-month workmanship warranty."],
+  "groups":[
+    ("Common home faults",["Power points that are dead, warm or sparking","Light fittings and switches that have stopped working","Circuit breakers or safety switches that keep tripping","Flickering or dimming lights","Buzzing switches, fittings or the switchboard"]),
+    ("Fault finding and diagnosis",["Tracing intermittent and hard-to-find faults","Isolating which circuit is causing the problem","Testing power points, circuits and connections","Sorting whether it's your fault or a network supply issue","Clear explanation of what's wrong and what it takes to fix"]),
+    ("Repairs and rectification",["Replacing failed switches, outlets and fittings","Repairing damaged or overloaded circuits","Fixing dodgy DIY or previous trade work","Rectifying defects flagged in an inspection report","Making unsafe wiring safe"])],
+  "edu_h":"When should you call an electrician for a repair?",
+  "edu_intro":"Some electrical faults are a nuisance, others are an early warning. Call a licensed electrician if you notice:",
+  "edu_list":["A power point that feels warm, sparks, or has scorch marks","Lights that flicker or dim for no obvious reason","A safety switch or breaker that keeps tripping","A burning smell near a fitting, switch or the switchboard","Power points or switches that only work sometimes","Anything that gives you even a small tingle when you touch it"],
+  "edu_close":"If a fitting is sparking or you can smell burning, switch that circuit off at the board and call us straight away. For anything less urgent, book a visit and we'll get it sorted."},
+
+ {"slug":"switchboard-upgrades","name":"Switchboard Upgrades","icon":"board","img":"meterbox-1.jpg",
+  "card":"Old ceramic fuses or no safety switches? We upgrade your switchboard to modern breakers and RCDs, ready for today's loads.",
+  "h1":"Switchboard upgrades that bring your home up to standard.",
+  "hero":"Ceramic fuses, no safety switches, or a board that trips every time the kettle and heater run together. Torraca Electrical upgrades home switchboards across Hornsby and the North Shore to modern, safe, compliant standards.",
+  "stype":"Switchboard Upgrade",
+  "title":"Switchboard Upgrades Hornsby | Home Switchboard Replacement | Torraca Electrical",
+  "meta":"Home switchboard upgrades across Hornsby and the North Shore. Modern breakers, safety switches and compliant boards, sized for today's loads. Call Torraca Electrical.",
+  "intro":[
+    "Your switchboard is the heart of your home's electrical system, and a lot of North Shore homes are still running boards that were never designed for modern loads. Old ceramic fuses, no safety switches, and not enough circuits to go around are all signs it's time for an upgrade.",
+    "We assess what you've got, size the new board for how you actually use the home now and where you're heading, then install it cleanly and test every circuit. Because we're a Level 2 provider, if the upgrade also needs the incoming supply or consumer mains lifted, we handle that in the same visit instead of subbing it out. Backed by our 12-month workmanship warranty."],
+  "groups":[
+    ("Switchboard upgrades and replacement",["Full switchboard replacement","Ceramic fuse to circuit breaker upgrades","Adding safety switches (RCDs) to every circuit","Extra circuits for renovations and added rooms","Neat, labelled boards that are easy to work with"]),
+    ("Safety and compliance",["Bringing the board up to current AS/NZS 3000 standards","Surge protection at the board","Correct circuit separation and RCD protection","Compliance certificate on completion","Rectifying defects flagged by an inspector or insurer"]),
+    ("Supply and capacity (Level 2)",["Consumer mains upgrades where the board needs more supply","Single phase to three phase conversions","Capacity for EV chargers, air con and induction cooking","Meter box relocation and upgrades","All Ausgrid paperwork handled in-house"])],
+  "edu_h":"How do you know your switchboard needs upgrading?",
+  "edu_intro":"A switchboard upgrade is one of the best-value safety investments in an older home. Look at yours if:",
+  "edu_list":["It still uses ceramic fuses or rewireable fuse wire","There are no safety switches (RCDs) protecting the circuits","It trips whenever a few appliances run at once","It's rusty, crowded, or has no room for another circuit","You're adding an EV charger, air con, or renovating","The board is more than 15 to 20 years old"],
+  "edu_close":"A typical home switchboard upgrade starts around $4,000 depending on scope. We'll assess yours and give you a clear, itemised quote before any work starts."},
+
+ {"slug":"led-lighting","name":"LED Lighting","icon":"bulb","img":"led-stairs.jpg",
+  "card":"Downlights, replacements and full lighting plans. Brighter, cheaper to run, and installed to last, not to fail in two years.",
+  "h1":"LED lighting that looks better and costs less to run.",
+  "hero":"Swapping tired halogens for LED, planning downlights for a reno, or fixing lights that keep failing. Torraca Electrical designs and installs home LED lighting across Hornsby and the North Shore.",
+  "stype":"LED Lighting Installation",
+  "title":"LED Lighting Hornsby | Home Downlights and Upgrades | Torraca Electrical",
+  "meta":"Home LED lighting and downlight installation across Hornsby and the North Shore. Lower running costs, better light, installed to last. Call Torraca Electrical for a quote.",
+  "intro":[
+    "Good lighting changes how a home feels, and switching to LED cuts your running costs while you're at it. The catch is that cheap fittings and rushed installs are why so many downlights flicker or die early. We use quality fittings, place them properly, and wire them to last.",
+    "Whether it's a straight swap of old halogens, a fresh downlight layout for a renovation, or dimmers and zones to set the mood, we'll plan it around the room and how you use it. Done once, done right, and covered by our 12-month workmanship warranty."],
+  "groups":[
+    ("Downlights and replacements",["Halogen to LED downlight conversions","New downlight layouts for renovations","Pendant, batten and feature light installation","Dimmable LED setups and dimmer installation","Replacing failed or flickering fittings"]),
+    ("Lighting design and control",["Room-by-room lighting plans","Warm or cool colour temperature selection","Zones and dimming for living areas","Smart and app-controlled lighting","Sensor lighting for hallways, robes and garages"]),
+    ("Kitchens, bathrooms and outdoors",["Kitchen task and under-cabinet lighting","IP-rated fittings for bathrooms and wet areas","Wardrobe and cabinet lighting","Undercover alfresco and patio lighting","Exhaust fan and light combinations"])],
+  "edu_h":"Is it worth upgrading to LED?",
+  "edu_intro":"For most homes, yes. LED uses far less power, lasts years longer, and runs cool. It's worth doing if:",
+  "edu_list":["You still have halogen downlights that run hot and cost a fortune","Bulbs and fittings keep blowing or flickering","You're renovating and want the lighting planned properly","Rooms feel too dark, too harsh, or unevenly lit","You want dimming or zones for living and bedroom areas","You'd like lower power bills without losing brightness"],
+  "edu_close":"We'll look at what you've got, tell you what's worth changing and what isn't, and quote it clearly. No pressure to replace what's fine."},
+
+ {"slug":"safety-switches","name":"Safety Switches","icon":"shield","img":"meterbox-2.jpg",
+  "card":"Safety switches (RCDs) cut the power in milliseconds to stop a shock becoming fatal. We install and test them properly.",
+  "h1":"Safety switches that protect your family, installed and tested right.",
+  "hero":"A safety switch cuts the power in a fraction of a second when something goes wrong, and every home should have them on every circuit. Torraca Electrical installs and tests RCDs across Hornsby and the North Shore.",
+  "stype":"Safety Switch Installation",
+  "title":"Safety Switch Installation Hornsby | RCD Installation | Torraca Electrical",
+  "meta":"Safety switch (RCD) installation and testing for homes across Hornsby and the North Shore. Protect every circuit, meet compliance, stay safe. Call Torraca Electrical.",
+  "intro":[
+    "A safety switch, or RCD, is the one device that can stop an electric shock from being fatal. It detects a fault and cuts the power in milliseconds, well before a person or your wiring is harmed. A surprising number of North Shore homes still have them on only some circuits, or none at all.",
+    "We install RCDs correctly at the switchboard, make sure every circuit that should be protected is protected, and test that they actually trip the way they're meant to. If your board is too old to take them, we'll tell you what an upgrade involves. Covered by our 12-month workmanship warranty."],
+  "groups":[
+    ("Safety switch installation",["RCDs added to every power and lighting circuit","Combined RCD and circuit breaker (RCBO) installation","Retrofitting safety switches to older boards","Dedicated protection for wet areas and outdoor circuits","Compliance certificate on completion"]),
+    ("Testing and compliance",["Push-button and trip-time testing","Checking existing RCDs actually work","Testing after a fault or nuisance tripping","Compliance for sales, rentals and insurance","Written record of results"]),
+    ("Fault finding on tripping RCDs",["Finding what's causing a safety switch to trip","Isolating the faulty appliance or circuit","Repairing the underlying fault, not just the reset","Advice on nuisance tripping versus a real fault","Upgrading boards too old to take an RCD"])],
+  "edu_h":"Does your home have proper safety switch protection?",
+  "edu_intro":"Not all homes do, and older ones often have gaps. You should have safety switches checked if:",
+  "edu_list":["Your switchboard still uses fuses or has no visible test buttons","Only some circuits are protected, not all of them","You've never tested the switches, or don't know how","A safety switch keeps tripping for no clear reason","You're buying, selling, or renting out the property","The home hasn't had an electrical check in years"],
+  "edu_close":"Testing your safety switches is quick and cheap, and installing them where they're missing is one of the most important electrical jobs in any home. Give us a call and we'll sort it."},
+
+ {"slug":"smoke-alarms","name":"Smoke Alarms","icon":"alert","img":"van.jpg",
+  "card":"Hard-wired, interconnected photoelectric smoke alarms installed and tested to keep your home compliant and your family safe.",
+  "h1":"Smoke alarms installed, interconnected and compliant.",
+  "hero":"Smoke alarms that are hard-wired, interconnected and where they need to be. Torraca Electrical installs and tests photoelectric smoke alarms for homes across Hornsby and the North Shore.",
+  "stype":"Smoke Alarm Installation",
+  "title":"Smoke Alarm Installation Hornsby | Hard-Wired and Interconnected | Torraca Electrical",
+  "meta":"Hard-wired, interconnected smoke alarm installation for homes across Hornsby and the North Shore. Photoelectric, compliant and tested. Call Torraca Electrical.",
+  "intro":[
+    "Smoke alarms are the cheapest life-saving device in your home, and the rules on them have tightened. Hard-wired, interconnected photoelectric alarms are the standard to aim for: when one goes off, they all go off, so everyone gets warning wherever they are in the house.",
+    "We install alarms in the right rooms and positions, wire them back to mains power with a battery backup, and interconnect them so they work as one system. We also test and replace ageing alarms, which are only rated to last around ten years. Backed by our 12-month workmanship warranty."],
+  "groups":[
+    ("Installation and interconnection",["Hard-wired 240V photoelectric alarms","Wireless and hard-wired interconnection","Correct placement in bedrooms, halls and living areas","Battery backup on every alarm","Replacing expired or beeping alarms"]),
+    ("Compliance and landlords",["Meeting current NSW smoke alarm requirements","Alarms for sales, rentals and insurance","Compliance for property managers and landlords","Photoelectric upgrades from old ionisation units","Written record of installation and testing"]),
+    ("Testing and maintenance",["Testing existing alarms and interconnection","Checking alarm age and replacing at end of life","Sorting alarms that beep or false-trigger","Advice on how many alarms and where","Adding alarms during a reno or extension"])],
+  "edu_h":"When should smoke alarms be replaced?",
+  "edu_intro":"Smoke alarms don't last forever, and a lot of homes are running expired units. Have yours looked at if:",
+  "edu_list":["Any alarm is more than 10 years old (check the date on it)","Your alarms are battery-only rather than hard-wired","The alarms aren't interconnected so only one sounds","You've still got old ionisation alarms rather than photoelectric","An alarm keeps chirping or going off for no reason","You're renting the property out and need it compliant"],
+  "edu_close":"If your alarms are old or you're not sure they'd all sound in a fire, book a check. It's a small job that matters more than almost any other."},
+
+ {"slug":"ev-charger","name":"EV Charger","icon":"ev","img":"ev-home.jpg",
+  "card":"A home EV charger installed properly, with the switchboard checked so your car charges safely at full speed overnight.",
+  "h1":"Home EV charger installation, done right.",
+  "hero":"Charge at home overnight, safely and at full speed. Torraca Electrical installs home EV chargers across Hornsby and the North Shore, all brands, with the switchboard checked first.",
+  "stype":"Home EV Charger Installation",
+  "title":"Home EV Charger Installation Hornsby | Torraca Electrical",
+  "meta":"Home EV charger installation across Hornsby and the North Shore. All brands, switchboard assessed, installed safely at full charging speed. Call Torraca Electrical.",
+  "intro":[
+    "Charging at home is the whole point of an EV, and getting the charger installed properly is what makes it safe and fast. Torraca Electrical installs home wall chargers of every brand, and because DIY EV wiring is illegal, this is a job for a licensed electrician anyway.",
+    "We start by checking your switchboard can take the extra load, run a dedicated circuit to wherever the car parks, mount the charger neatly, and set it up so it charges overnight on your cheapest tariff. Where the board or supply needs lifting first, being Level 2 means we handle that too. Covered by our 12-month workmanship warranty."],
+  "groups":[
+    ("Home charger installation",["Wall-mounted AC chargers, all brands","Tesla, Wallbox, Ocular, Zappi and more","Garage, carport and driveway mounting","Dedicated 32A circuit to the charging point","Smart charger setup and app configuration"]),
+    ("Switchboard and supply",["Switchboard capacity check before install","Board upgrades to carry the extra load","Single phase to three phase where needed (Level 2)","Load management so nothing overloads","Tidy cable runs, inside or out"]),
+    ("Charging smart",["Setting the charger to off-peak tariffs","Scheduling and app-based control","Future-proofing for a second EV","Solar-friendly setups where you have panels","Advice on the right charger for your car and use"])],
+  "edu_h":"What's involved in a home EV charger install?",
+  "edu_intro":"Most homes can take a charger, but a few things need checking first. Here's what's typically involved:",
+  "edu_list":["A licensed electrician is required by law, DIY is illegal","Your switchboard may need capacity checked or upgraded","A dedicated circuit runs from the board to the charger","Most homes suit a 7kW single-phase charger","Three-phase homes can charge faster if the car supports it","Smart chargers can be set to run on off-peak power"],
+  "edu_close":"Not sure what your home can take? We offer a free assessment and clear quote. Just get in touch.",
+  "cross":("ev-charger-installation","EV charger installation for business and strata","Fitting out a workplace, carpark or strata building? See our")},
+
+ {"slug":"ceiling-fans","name":"Ceiling Fans","icon":"compass","img":"lighting.jpg",
+  "card":"Ceiling fans supplied and installed, or your fan swapped and wired to a proper controller. Balanced, quiet, done right.",
+  "h1":"Ceiling fans installed and wired properly.",
+  "hero":"A new fan supplied and fitted, or an old one swapped out and wired to a proper controller. Torraca Electrical installs ceiling fans across Hornsby and the North Shore.",
+  "stype":"Ceiling Fan Installation",
+  "title":"Ceiling Fan Installation Hornsby | Supply and Install | Torraca Electrical",
+  "meta":"Ceiling fan installation across Hornsby and the North Shore. Supplied and fitted or swapped, wired to proper controls, balanced and quiet. Call Torraca Electrical.",
+  "intro":[
+    "A ceiling fan is one of the cheapest ways to make a room comfortable year-round, but it has to be mounted to something solid and wired correctly or you end up with a wobble, a hum, or a fan that won't run properly. We install fans that are balanced, quiet and safely fixed.",
+    "We can supply and fit a fan to suit the room, or install one you've already bought, including fan and light combinations and models with wall or remote controls. If there's no existing point, we'll run the wiring and add the switch. Backed by our 12-month workmanship warranty."],
+  "groups":[
+    ("Supply and installation",["Ceiling fans supplied to suit the room","Installing a fan you've already bought","Fan and light combination units","Replacing old or noisy fans","Outdoor and undercover patio fans (IP-rated)"]),
+    ("Wiring and controls",["Wall speed controllers and switches","Remote and app-controlled fans","Adding a new fan point where there isn't one","Separate switching for fan and light","Reverse-cycle winter mode setup"]),
+    ("Mounting done right",["Fixing to a solid, rated mounting point","Balancing so there's no wobble","Sorting fans that hum or run slow","Correct blade height and clearance advice","Tidy, safe finish every time"])],
+  "edu_h":"Should a ceiling fan be installed by an electrician?",
+  "edu_intro":"Yes. Wiring and mounting a fan is licensed electrical work, and doing it wrong causes wobble, noise or worse. Call us when:",
+  "edu_list":["You're adding a fan where there's no existing point","An old fan is wobbling, humming or running slowly","You want a fan and light combo on separate switches","You'd like remote or wall speed control","The room is outdoors or undercover and needs a rated fan","You've bought a fan and want it fitted safely"],
+  "edu_close":"Whether it's one fan or fans through the whole house, we'll get them up, balanced and running quietly. Give us a call."},
+
+ {"slug":"power-points","name":"Power Points","icon":"data","img":"switchboard.jpg",
+  "card":"Extra power points, USB outlets and outdoor GPOs added where you actually need them. No more double adaptors and lead runs.",
+  "h1":"Extra power points, exactly where you need them.",
+  "hero":"More outlets, USB points, and outdoor power where the double adaptors and extension leads currently live. Torraca Electrical adds power points for homes across Hornsby and the North Shore.",
+  "stype":"Power Point Installation",
+  "title":"Power Point Installation Hornsby | Extra GPOs and USB Outlets | Torraca Electrical",
+  "meta":"Power point installation across Hornsby and the North Shore. Extra GPOs, USB outlets and outdoor power added safely where you need them. Call Torraca Electrical.",
+  "intro":[
+    "Running out of outlets is one of the most common jobs we get, and it's worth doing properly rather than living with double adaptors and leads across the floor. We add power points where you actually use power: behind the TV, across a benchtop, in the garage, or out on the deck.",
+    "New outlets are wired back to the board on the right circuit, so you're not overloading an existing one, and outdoor points are weatherproof and RCD-protected. Small job or a whole house of extra outlets during a reno, it's covered by our 12-month workmanship warranty."],
+  "groups":[
+    ("Indoor power points",["Extra double and single GPOs","USB and USB-C combination outlets","Kitchen benchtop and appliance points","Behind-TV and media wall outlets","Garage, laundry and study points"]),
+    ("Outdoor and special outlets",["Weatherproof outdoor GPOs","Power for sheds, studios and pergolas","Dedicated circuits for heavy appliances","Points for pool, spa and pump equipment","Floor and skirting outlets"]),
+    ("Done safely",["Wired to the correct circuit, not an overloaded one","RCD protection on new circuits","Neat cable runs and clean finish","Moving awkwardly placed existing points","Replacing worn, cracked or warm outlets"])],
+  "edu_h":"When is it time to add power points?",
+  "edu_intro":"If your home was wired years ago, it almost certainly has fewer outlets than modern life needs. It's worth adding points when:",
+  "edu_list":["You're relying on double adaptors and power boards","Extension leads are running between rooms","There's no power where you've set up a desk or TV","The kitchen or laundry is short on benchtop outlets","You want weatherproof power outside","An existing outlet is cracked, worn or feels warm"],
+  "edu_close":"Adding outlets is quick and inexpensive, and it clears the clutter and the safety risk of overloaded boards. Tell us where you need power and we'll sort it."},
+
+ {"slug":"outdoor-lighting","name":"Outdoor Lighting","icon":"tree","img":"lighting.jpg",
+  "card":"Garden, path, deck and security lighting for your home. Wired to last outdoors, RCD-protected, and set on timers or sensors.",
+  "h1":"Outdoor lighting that makes your home safer and better to live in.",
+  "hero":"Path and garden lights, deck and entertaining areas, and sensor security lighting. Torraca Electrical designs and installs home outdoor lighting across Hornsby and the North Shore.",
+  "stype":"Home Outdoor Lighting",
+  "title":"Outdoor Lighting Hornsby | Home Garden and Security Lighting | Torraca Electrical",
+  "meta":"Home outdoor lighting across Hornsby and the North Shore. Garden, path, deck and sensor security lighting, wired to last and RCD-protected. Call Torraca Electrical.",
+  "intro":[
+    "Outdoor lighting does two jobs at once: it makes your home safer to come home to, and it makes the garden and entertaining areas usable after dark. The trick is fittings and wiring rated for weather and installed to last, because outdoor is where cheap jobs fail fastest.",
+    "We plan the lighting around how you use the space, from subtle path and garden lights to bright, sensor-triggered security lighting. Everything outdoors is weather-rated, RCD-protected and can run on timers or sensors so it looks after itself. Covered by our 12-month workmanship warranty."],
+  "groups":[
+    ("Garden and path lighting",["Garden bed and feature uplighting","Path, step and driveway lighting","Low-voltage garden lighting systems","Timer and dusk-to-dawn controls","Warm, low-glare fittings for the evening"]),
+    ("Deck and entertaining",["Deck, patio and pergola lighting","Alfresco and outdoor kitchen lighting","Wall and step lights for stairs and levels","Festoon and feature lighting wiring","Weatherproof switching and control"]),
+    ("Security lighting",["Motion-sensor security floodlights","Driveway and perimeter lighting","Front-door and entry lighting","Smart and app-controlled outdoor lights","Sensor setup to avoid false triggers"])],
+  "edu_h":"Why use a licensed electrician for outdoor lighting?",
+  "edu_intro":"Outdoor electrical work faces weather, water and underground cabling, so it carries risks indoor work doesn't. Getting it wrong can void your insurance. It matters because:",
+  "edu_list":["Outdoor circuits must be RCD-protected","Fittings must be rated for weather exposure (IP rating)","Underground cabling must be laid and protected correctly","Poolside and wet-area lighting has strict rules","Bad outdoor wiring is a shock and fire risk","Only a licensed electrician can legally install fixed outdoor wiring"],
+  "edu_close":"We'll make sure your outdoor lighting looks the part and is completely safe and compliant. Tell us what you're picturing and we'll take it from there.",
+  "cross":("landscape-lighting","full landscape and feature lighting service","Larger garden, pool or feature lighting project? See our")},
+
+ {"slug":"rewiring","name":"Rewiring","icon":"bolt","img":"mains-trench.jpg",
+  "card":"Old, brittle or unsafe wiring replaced. Full or partial home rewires, planned around you, with minimal mess and disruption.",
+  "h1":"Rewiring that makes an older home safe again.",
+  "hero":"Old cloth or brittle wiring, not enough circuits, and repairs that keep coming back. Torraca Electrical handles full and partial home rewires across Hornsby and the North Shore.",
+  "stype":"Home Rewiring",
+  "title":"House Rewiring Hornsby | Full and Partial Rewires | Torraca Electrical",
+  "meta":"Full and partial house rewiring across Hornsby and the North Shore. Old wiring replaced safely, planned around you, minimal mess. Call Torraca Electrical.",
+  "intro":[
+    "Wiring doesn't last forever. Older North Shore homes often still have decades-old cabling that's gone brittle, was never earthed properly, or simply can't cope with how much we plug in now. Rewiring replaces it with modern, safe cable and gives you the circuits a current home needs.",
+    "A rewire sounds daunting, but done well it's methodical and tidy. We plan it in stages around you, keep the mess and disruption down, and make good as we go. Being Level 2, we can upgrade the switchboard and supply at the same time so it's one team, one job. Backed by our 12-month workmanship warranty."],
+  "groups":[
+    ("Full and partial rewires",["Whole-home rewiring","Partial rewires for older sections or extensions","Replacing brittle, cloth or unearthed wiring","Rewiring during a renovation","Adding circuits for modern loads"]),
+    ("Planning and minimal disruption",["Staged work so you keep power where possible","Cable runs planned to reduce wall damage","Making good and tidy reinstatement","Clear scope and timeline up front","Coordination with builders on renos"]),
+    ("Switchboard and supply (Level 2)",["New switchboard as part of the rewire","Consumer mains and supply upgrades","Single phase to three phase where needed","Full RCD and surge protection","Compliance certificate on completion"])],
+  "edu_h":"How do you know a home needs rewiring?",
+  "edu_intro":"Rewiring is a bigger job, so it's worth knowing the signs. Consider it if:",
+  "edu_list":["The home still has old cloth-covered or rubber wiring","There's no earth on some circuits or outlets","Repairs and faults keep recurring in the same areas","The home is 40-plus years old and never rewired","You're renovating and opening up walls anyway","Lights dim and circuits overload with normal use"],
+  "edu_close":"Not every old home needs a full rewire, and we'll tell you honestly whether a partial job or targeted repairs will do instead. Book an assessment and we'll give you the straight version."},
+
+ {"slug":"surge-protection","name":"Surge Protection","icon":"shield","img":"meterbox-3.jpg",
+  "card":"Whole-home surge protection at the switchboard to guard your appliances and electronics from spikes and storm damage.",
+  "h1":"Surge protection that guards your appliances and electronics.",
+  "hero":"One power spike can take out a fridge, a TV and every charger in the house. Torraca Electrical fits whole-home surge protection at the switchboard across Hornsby and the North Shore.",
+  "stype":"Surge Protection Installation",
+  "title":"Surge Protection Hornsby | Whole-Home Surge Protection | Torraca Electrical",
+  "meta":"Whole-home surge protection installed at the switchboard across Hornsby and the North Shore. Guard appliances and electronics from spikes. Call Torraca Electrical.",
+  "intro":[
+    "Modern homes are full of electronics that don't like power spikes: fridges, TVs, computers, solar inverters, and every device on a charger. A surge from a storm, the grid, or a fault can wipe them out in an instant, and it's rarely covered the way people assume.",
+    "A surge protection device fitted at your switchboard clamps those spikes before they reach your circuits, protecting the whole home from one point. We fit it as part of a switchboard upgrade or as a standalone job on a compatible board, and being Level 2 we can also address supply-side issues that cause surges. Covered by our 12-month workmanship warranty."],
+  "groups":[
+    ("Whole-home protection",["Surge protection device fitted at the switchboard","Protection across every circuit from one point","Fitted with a switchboard upgrade or on its own","Correct device rating for your board","Compliance and correct installation"]),
+    ("Sensitive equipment",["Extra protection for home offices and AV gear","Guarding solar inverters and battery systems","Protection for medical and essential equipment","Point-of-use protection where it's warranted","Advice on what's worth protecting"]),
+    ("Storm and supply issues",["Protection ahead of storm season","Addressing repeated spikes and flickers","Checking earthing that makes surges worse","Supply-side fault investigation (Level 2)","Advice after appliances have been damaged"])],
+  "edu_h":"Do you need surge protection?",
+  "edu_intro":"If your home runs on more than lights and a kettle, it's worth having. Consider it if:",
+  "edu_list":["You've lost appliances or electronics to a spike before","You're in an area that gets decent storms","You have solar, a battery, or a home office setup","You've just upgraded the switchboard anyway","Lights flicker or dim when big appliances kick in","You want cheap insurance for expensive gear"],
+  "edu_close":"Surge protection is inexpensive next to the equipment it protects. We'll check whether your board can take a device and fit one that suits. Give us a call."},
+
+ {"slug":"emergency","name":"24/7 Emergency","icon":"alert","img":"van.jpg","emergency":True,
+  "card":"Power out, sparking, or a burning smell at home? We answer 24/7 across the North Shore and make it safe, fast.",
+  "h1":"Home electrical emergency? We're on call right now.",
+  "hero":"Power out, sparking, or a burning smell at home? Torraca Electrical answers 24 hours a day, 7 days a week for urgent home electrical emergencies across Hornsby and the North Shore.",
+  "stype":"Emergency Electrical Services",
+  "title":"Emergency Electrician Hornsby | 24/7 Home Callout | Torraca Electrical",
+  "meta":"24/7 emergency electrician for homes across Hornsby and the North Shore. Power outages, sparking, burning smells and safety hazards, made safe fast. Call now.",
+  "intro":[
+    "When something goes wrong with the power at home, you want someone who answers and can make it safe quickly. Torraca Electrical runs an after-hours emergency service, 24 hours a day, 7 days a week including weekends and public holidays, across Hornsby and the North Shore.",
+    "We'll get to you, make the situation safe, and restore power where we can. If it's a network supply fault rather than something inside the home, being Level 2 means we can often deal with that too instead of leaving you waiting on someone else."],
+  "groups":[
+    ("Power loss and tripping",["Complete power outage at the home","Safety switch or breaker that won't reset","Overloaded circuits tripping repeatedly","Working out if it's your fault or the network's","Restoring power safely"]),
+    ("Hazards and safety",["Sparking or arcing power points and switches","Burning smell from a fitting or the switchboard","Exposed or damaged wiring","After a minor shock from an appliance or outlet","Signs of an electrical fire"]),
+    ("Storm and after-hours",["Storm damage to the switchboard or service line","Water getting into electrical fittings","Fallen or damaged service line to the house (Level 2)","After-hours repairs for the home","Temporary supply where it's needed"])],
+  "edu_h":"What counts as an electrical emergency at home?",
+  "edu_intro":"If you're not sure, treat it as one and call. Ring us straight away if you have:",
+  "edu_list":["Total loss of power with no obvious cause","Sparking, arcing or burning from any fitting","A burning smell you can't explain","Had an electric shock, however minor","A safety switch that keeps tripping and won't hold","Storm damage to your meter box or service line"],
+  "edu_close":"While you wait: switch off the affected circuit at the board if it's safe to reach, keep clear of any damaged wiring, and if you can smell burning or see smoke, get everyone out and call 000 first.",
+  "cross":("emergency-electrician","emergency service for business and strata","Need urgent help at a workplace or managed building? See our")},
+]
+HOME_BY_SLUG={s["slug"]:s for s in HOME_SERVICES}
+
+print("content loaded:", len(SERVICES), "services,", len(HOME_SERVICES), "home services,", len(SUBURBS), "suburbs")

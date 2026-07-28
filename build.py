@@ -47,6 +47,7 @@ I = {
 # Nav dropdown data, populated by render.py (list of (slug, name))
 NAV_SERVICES = []
 NAV_SUBURBS = []
+NAV_HOME = []  # (slug, name) for homeowner service pages, set by render.py
 STARS = '<span class="stars" aria-label="5 out of 5 stars">'+I["star-svg"]*5+'</span>'
 
 NAV = [("/", "Home"), ("/services/", "Services"), ("/about/", "About"),
@@ -85,17 +86,23 @@ def head(title, desc, canon, schema, depth, body_class=""):
 
 def header(depth):
     a = "../"*depth if depth else ""
-    # Services dropdown. Homeowners + Businesses fly out to service labels
-    # (placeholder text for now, individual pages to be linked later).
+    # Services dropdown. Homeowners flies out to live service pages under
+    # /homeowners/<slug>/ (populated from NAV_HOME). Businesses is still
+    # placeholder labels until those pages are built.
     # Property Managers + Strata are direct links to their landing pages.
-    HOME_SVC = ["Electrical Repairs","Switchboard Upgrades","LED Lighting","Safety Switches",
-        "Smoke Alarms","EV Chargers","Ceiling Fans","Power Points","Outdoor Lighting",
-        "Rewiring","Surge Protection","24/7 Emergency"]
+    HOME_SVC = NAV_HOME  # list of (slug, label) tuples, real pages
     BIZ_SVC = ["Commercial Electrician","3-Phase Power","Office Lighting","Emergency Lighting",
         "Data Cabling","Test and Tag","Commercial EV Charging","Power Upgrades",
         "Warehouse Lighting","Thermal Imaging","24/7 Emergency"]
     def _sub(label, items):
-        lis = "".join(f'<span class="soon">{x}</span>' for x in items)
+        cells = []
+        for x in items:
+            if isinstance(x, tuple):
+                slug, name = x
+                cells.append(f'<a href="{a}homeowners/{slug}/">{name}</a>')
+            else:
+                cells.append(f'<span class="soon">{x}</span>')
+        lis = "".join(cells)
         return (f'<div class="subitem"><button class="subtoggle" aria-expanded="false" aria-haspopup="true">{label}'
                 f'<span class="subchev">{I["chev"]}</span></button>'
                 f'<div class="submenu">{lis}</div></div>')

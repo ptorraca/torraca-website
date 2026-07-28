@@ -91,16 +91,22 @@ MAIL_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-wid
 PIN_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>'
 CLOCK_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>'
 
-from content import SERVICES, SUBURBS
+from content import SERVICES, SUBURBS, HOME_SERVICES
 CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>'
-HOME_SVC=["Electrical Repairs","Switchboard Upgrades","LED Lighting","Safety Switches",
-  "Smoke Alarms","EV Chargers","Ceiling Fans","Power Points","Outdoor Lighting",
-  "Rewiring","Surge Protection","24/7 Emergency"]
+# Homeowners items are live pages: (slug, name) -> #/homeowners/<slug>/ routes.
+HOME_SVC=[(s['slug'], s['name']) for s in HOME_SERVICES]
 BIZ_SVC=["Commercial Electrician","3-Phase Power","Office Lighting","Emergency Lighting",
   "Data Cabling","Test and Tag","Commercial EV Charging","Power Upgrades",
   "Warehouse Lighting","Thermal Imaging","24/7 Emergency"]
 def _sub_nav(label,items):
-    lis="".join(f'<span class="soon">{x}</span>' for x in items)
+    cells=[]
+    for x in items:
+        if isinstance(x,tuple):
+            slug,name=x
+            cells.append(f'<a href="#/homeowners/{slug}/">{name}</a>')
+        else:
+            cells.append(f'<span class="soon">{x}</span>')
+    lis="".join(cells)
     return (f'<div class="subitem"><button class="subtoggle" aria-expanded="false" aria-haspopup="true">{label}'
             f'<span class="subchev">{CHEV}</span></button><div class="submenu">{lis}</div></div>')
 seg_menu_nav=(_sub_nav("Homeowners",HOME_SVC)+_sub_nav("Businesses",BIZ_SVC)
