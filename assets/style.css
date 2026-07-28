@@ -415,6 +415,14 @@ footer.site{background:var(--ink);color:rgba(255,255,255,.72);padding:60px 0 26p
   .compare .row{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr}
   .foot{grid-template-columns:1fr}
+  /* Content-page hero: on mobile, stack the photo as a clear banner above the
+     text instead of burying it under the copy + overlay. Desktop is unchanged. */
+  .pagehero{display:flex;flex-direction:column}
+  .pagehero::before{display:none}
+  .pagehero-bg{position:static;width:100%;height:auto;aspect-ratio:4/3;max-height:300px;opacity:1}
+  .pagehero .inner{padding:24px 20px 28px}
+  .pagehero h1{font-size:1.65rem;margin-bottom:12px}
+  .pagehero .sub{margin-bottom:18px}
   .callbar{display:flex}
   body{padding-bottom:70px}
   .callbar{padding-bottom:calc(9px + env(safe-area-inset-bottom))}

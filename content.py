@@ -186,7 +186,7 @@ SERVICES = [
   "edu_intro":"Outdoor electrical work involves additional hazards: weather exposure, water, underground cabling, and safety considerations that don't apply indoors. Attempting outdoor lighting without a licensed electrician can be dangerous and may void your home insurance. Here's why it matters:",
   "edu_list":["Outdoor circuits must be protected by safety switches (RCDs)","Pool lighting must comply with strict AS/NZS 3000 requirements","Underground cabling must be correctly installed and protected","All outdoor fittings must be rated for their environment (IP rating)","Incorrectly installed outdoor lighting is a fire and electrocution risk","Only licensed electricians can legally install permanent outdoor wiring"],
   "edu_close":"Torraca Electrical will ensure your landscape lighting is not only stunning but completely safe and compliant. Get in touch to discuss your vision."},
- {"slug":"level-2-asp-electrician","name":"Level 2 ASP Electrician","icon":"bolt","img":"service-overhead.jpg","focus":"center 32%",
+ {"slug":"level-2-asp-electrician","name":"Level 2 ASP Electrician","icon":"bolt","img":"level-2-hero.jpg","focus":"center 30%",
   "card":"Network-side work most electricians cannot legally touch: new connections, consumer mains, metering and service lines. Accreditation no. 5760.",
   "h1":"Level 2 ASP Electrician for Ausgrid Connections",
   "hero":"Torraca Electrical is an accredited Level 2 Authorised Service Provider, no. 5760. That means we can do the network-side work a standard electrician is not licensed to touch, and do it in the same visit as the rest of the job.",
